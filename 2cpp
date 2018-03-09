@@ -1,0 +1,85 @@
+#include <iostream>
+
+using namespace std;
+
+class tree_element
+{
+private:
+    int value;			// Element value
+    struct tree_element* left;	// Pointer to left subtree
+    struct tree_element* right;	// Pointer to right subtree
+public:
+    tree_element() {};
+    ~tree_element() {};
+
+    void set_value(int value)
+    {
+        this->value = value;
+    }
+
+    int return_value()
+    {
+        return this->value;
+    }
+
+    void insert_into_tree (int val)
+    {
+        tree_element* root1 = this;
+        while(root1->value != val)
+        {
+            if (val < root1->value)
+            {
+                if(root1->left == NULL)
+                {
+                    tree_element* elem = new tree_element();
+                    elem->set_value(val);
+                    root1->left = elem;
+                    return ;
+                }
+                root1 = root1->left;
+            }
+            else
+            {
+                if(root1->right == NULL)
+                {
+                    tree_element* elem = new tree_element();
+                    elem->set_value(val);
+                    root1->right = elem;
+                    return ;
+                }
+                root1 = root1->right;
+            }
+        }
+    }
+    tree_element* search_by_value(int value)
+    {
+        tree_element* root = this;
+        while(root != NULL && root->value != value)
+        {
+            if (value < root->value)
+            {
+                root = root->left;
+            }
+            else
+            {
+                root = root->right;
+            }
+        }
+        return root;
+    }
+    
+    void delete_by_value (int val)
+    {
+        tree_element* elem = this->search_by_value(val);
+        if (elem->right->value < elem->left->value)
+        
+    }
+ 
+ 
+};
+ 
+int main()
+{
+    cout << "Hello world!" << endl;
+    return 0;
+}
