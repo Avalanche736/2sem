@@ -68,6 +68,7 @@ public:
         return root;
     }
     
+    //тут доделать
     void delete_by_value (int val)
     {
         tree_element* elem = this->search_by_value(val);
