@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std;
+
+class Vector2D
+{
+private:
+    int x;
+    int y;
+public:
+    Vector2D(int x, int y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+    // Деструктор (если нужен)
+    ~Vector2D();
+
+    int getX()
+    {
+        return this->x;
+    }
+    int getY()
+    {
+        return this->y;
+    }
+    bool operator == (const Vector2D &rhs) { return ((this->x == rhs.x)&&(this->y == rhs.y)); }
+
+};
+
+std::ostream& operator<<(std::ostream& s, Vector2D& v)
+{
+	s << '(' << v.getX() << "; " << v.getY()  << ')';
+	return s;
+}
+
+
+int main()
+{
+    cout << "Hello world!" << endl;
+    Vector2D* v4= new Vector2D(1,1);
+    Vector2D* v5= new Vector2D(1,2);
+    Vector2D* v6= new Vector2D(1,1);
+    Vector2D & v1 = *v4;
+    Vector2D & v2 = *v5;
+    Vector2D & v3 = *v6;
+    cout << v1 << endl;
+    cout << (v1 == v2) << endl;
+    cout << (v1 == v3) << endl;
+
+    return 0;
+}
